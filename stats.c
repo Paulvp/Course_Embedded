@@ -45,7 +45,15 @@ void main() {
   unsigned char *sortedarray;
   
   /* Statistics and Printing Functions Go Here */
-
+  print_array(ptrarray, arraysize);
+  min = find_minimum(ptrarray, arraysize);
+  max = find_maximum(ptrarray, arraysize);
+  mean = find_mean(ptrarray, arraysize);
+  sortedarray = sort_array(ptrarray, arraysize);
+  median = find_median(ptrarray, arraysize);
+  print_statistics(ptrarray, arraysize,min,max,mean,median);
+  print_array(sortedarray, arraysize);
+  
 }
 
 /* Add other Implementation File Code Here */
@@ -53,36 +61,139 @@ void main() {
 /*Function Definitions*/
 static void  print_array(unsigned char *ptrarray, unsigned int arraysize)
 {
+	unsigned char printarray[SIZE];
+	printf("\n");
+	for(int i=0; i<arraysize; i++)
+	{
+		printarray[i] = *ptrarray;
+		ptrarray++;
+	}
 	
+	for(int i=0; i<arraysize; i++)
+	{
+		printf("  %d", printarray[i]);
+	}
 }
 
 static void print_statistics(unsigned char *ptrarray, unsigned int arraysize, unsigned char min, unsigned char max, unsigned char mean, unsigned char median)
 {
-	
+	printf("\nMean = %d", mean);
+	printf("\nMedian = %d", median);
+	printf("\nMinimum = %d", min);
+	printf("\nMaximum = %d", max);
 }
 
 static unsigned char find_mean(unsigned char *ptrarray, unsigned int arraysize)
-{	
+{
+	unsigned char sum;
+	unsigned char mean;
+	
+	for(int i=0; i<arraysize; i++)
+	{
+		sum += *ptrarray;
+		ptrarray++;
+	}
+	
+	mean = sum/arraysize;
+	
 	return mean;
 }
 
 static unsigned char find_median(unsigned char *ptrsortedarray, unsigned int arraysize)
-{	
+{
+	unsigned char mid;
+	unsigned char median;
+	unsigned char *ptrmid1;
+	unsigned char *ptrmid2;
+	
+	mid = arraysize/2 - 1;
+	
+	if(arraysize%2==0)
+	{
+		ptrmid1 = ptrsortedarray+mid;
+		ptrmid2 = ptrmid1+1;
+		median = (*ptrmid1 + *ptrmid2)/2;
+	}
+	else
+	{
+		median = *ptrmid1;
+	}
+	
 	return median;
 }
 
 static unsigned char *sort_array(unsigned char *ptrarray, unsigned int arraysize)
 {
+	unsigned char temp;
+	static unsigned char sortedarray[SIZE];
+	unsigned char *ptrsortedarray;
+	
+	for(int i=0; i<arraysize; i++)
+	{
+		sortedarray[i] = *ptrarray;
+		ptrarray++;
+	}
+	
+	
+	for(int i=0; i<arraysize; i++)
+	{
+		for(int j=i; j<arraysize; j++)
+		{
+			if(sortedarray[j]<sortedarray[i])
+			{
+				temp = sortedarray[i];
+				sortedarray[i] = sortedarray[j];
+				sortedarray[j] = temp;
+			}
+		}			
+	}
+	
+	ptrsortedarray = sortedarray;
+	
+	/*printf("\n");
+	for(int i=0; i<arraysize; i++)
+	{
+		printf("  %d", *ptrsortedarray);
+		ptrsortedarray++;
+	}*/
+	
 	return sortedarray;
 }
 
 static unsigned char find_minimum(unsigned char *ptrarray, unsigned int arraysize)
 {
+	unsigned char min;
+	
+	min = *ptrarray;
+	for(int i=0; i<arraysize; i++)
+	{
+		if(*ptrarray<min)
+		{
+			min = *ptrarray;
+		}
+		
+		ptrarray++;
+	}
+	
 	return min;
 }
 
 static unsigned char find_maximum(unsigned char *ptrarray, unsigned int arraysize)
-{	
+{
+	unsigned char max;
+	
+	max = *ptrarray;
+	for(int i=0; i<arraysize; i++)
+	{
+		if(*ptrarray>max)
+		{
+			max = *ptrarray;
+		}
+		
+		ptrarray++;
+	}
+	
+	
 	return max;
 }
 
