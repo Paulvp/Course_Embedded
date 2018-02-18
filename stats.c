@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file <stats.c> 
+ * @brief <Premliminary Data Analytics>
  *
- * <Add Extended Description Here>
+ * <For finding mean, median, maximum and maximum of the given character array. To sort and print the array.>
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author <Paul Perumattathu>
+ * @date <16 Feb 2018>
  *
  */
 
@@ -36,8 +36,53 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
+  unsigned char *ptrarray = test;
+  unsigned int arraysize = SIZE;
+  unsigned char mean = 0;
+  unsigned char median = 0;
+  unsigned char max = 0;
+  unsigned char min = 0;
+  unsigned char *sortedarray;
+  
   /* Statistics and Printing Functions Go Here */
 
 }
 
 /* Add other Implementation File Code Here */
+
+/*Function Definitions*/
+static void  print_array(unsigned char *ptrarray, unsigned int arraysize)
+{
+	
+}
+
+static void print_statistics(unsigned char *ptrarray, unsigned int arraysize, unsigned char min, unsigned char max, unsigned char mean, unsigned char median)
+{
+	
+}
+
+static unsigned char find_mean(unsigned char *ptrarray, unsigned int arraysize)
+{	
+	return mean;
+}
+
+static unsigned char find_median(unsigned char *ptrsortedarray, unsigned int arraysize)
+{	
+	return median;
+}
+
+static unsigned char *sort_array(unsigned char *ptrarray, unsigned int arraysize)
+{
+	return sortedarray;
+}
+
+static unsigned char find_minimum(unsigned char *ptrarray, unsigned int arraysize)
+{
+	return min;
+}
+
+static unsigned char find_maximum(unsigned char *ptrarray, unsigned int arraysize)
+{	
+	return max;
+}
+
